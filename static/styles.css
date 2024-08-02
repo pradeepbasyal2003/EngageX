@@ -18,6 +18,7 @@ header {
     width: 98%;
     margin: 5px auto;
     position: sticky;
+    top : 0;
 }
 
 nav {
@@ -27,6 +28,7 @@ nav {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
+    ;
 }
 
 .logo {
@@ -59,6 +61,7 @@ nav {
 
 .nav-links li:hover{
     background-color: rgb(103, 184, 255);
+    cursor: pointer;
 }
 
 .material-symbols-outlined{
@@ -66,4 +69,14 @@ nav {
     padding-right: 5px;
     justify-content: center;
     color: #333;
+}
+
+.project-description{
+    background-color: rgb(214, 236, 255);
+    color: #fff;
+    padding: 1rem 0;
+    border-radius: 20px;
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
 }
