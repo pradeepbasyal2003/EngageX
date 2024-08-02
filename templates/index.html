@@ -18,7 +18,11 @@
                 <li><span class="material-symbols-outlined">home</span><a href="#home">Home</a></li>
                 <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
                 <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
+                {%if user.is_authenticated%}
+                <li><span class="material-symbols-outlined">person</span><a href="/account/profile">{{user.username}}</a></li>
+                {%else%}
                 <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
+                {%endif%}
             </ul>
         </nav>
     </header>
