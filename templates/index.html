@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-{%load static%}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EngageX</title>
-    <link rel="stylesheet" href="{%static 'css\styles.css'%}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
 </head>
 <body>
     <!-- header start -->
     <header>
         <nav>
-            <div class="logo-class"><img class="logo"  src="{%static 'images\engagex-high-resolution-logo-black-transparent.png' %}" alt=""></div>
-            <form method="GET" action="/search">
-                {%csrf_token%}
-            <div class="search-bar">
-                <input type="text" name="query" placeholder="Search for brands or creators...">
-                <button type="submit">Search</button>
+            <div class="logo-class">
+                <img class="logo" src="{% static 'images/engagex-high-resolution-logo-black-transparent.png' %}" alt="EngageX Logo">
             </div>
+            <form method="GET" action="/search">
+                {% csrf_token %}
+                <div class="search-bar">
+                    <input type="text" name="query" placeholder="Search for brands or creators...">
+                    <button type="submit">Search</button>
+                </div>
             </form>
             <ul class="nav-links">
                 <li><span class="material-symbols-outlined">home</span><a href="#home">Home</a></li>
                 <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
                 <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
-                {%if user.is_authenticated%}
-                <li><span class="material-symbols-outlined">manage_accounts</span><a href="/account/profile">{{user.username}}</a></li>
-                {%else%}
+                {% if user.is_authenticated %}
+                <li><span class="material-symbols-outlined">manage_accounts</span><a href="/account/profile">{{ user.username }}</a></li>
+                {% else %}
                 <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
-                {%endif%}
+                {% endif %}
             </ul>
         </nav>
     </header>
@@ -39,13 +40,52 @@
     <section class="project-description">
         <div class="body-container">
             <h2>About Our Project</h2>
-            <p>Our project aims to revolutionize the way you manage your tasks and projects. With our intuitive design and powerful features, you'll be able to stay organized and efficient like never before.</p>
+            <p>At EngageX, we are dedicated to transforming the way brands and creators connect. Our platform provides a seamless and innovative approach to collaboration, making it easier than ever for creators and brands to work together on exciting projects.</p>
+            <p>Our team has meticulously designed EngageX to be a powerful tool for managing partnerships and fostering creativity. With features that include advanced search capabilities, personalized recommendations, and robust communication tools, we aim to enhance the way you discover and engage with potential collaborators.</p>
+            <p>We believe in the power of collaboration and the impact it can have on the industry. EngageX is more than just a platform; it’s a community where creativity thrives and meaningful connections are made. Join us in shaping the future of brand-creator interactions.</p>
             <a href="#signup" class="btn large">Sign Up Now</a>
         </div>
         <div class="image-container">
-            <img src="{%static 'images\pexels-pixabay-267350.jpg' %}" alt="" class="image1">
+            <img src="{% static 'images/pexels-pixabay-267350.jpg' %}" alt="Project Image" class="image1">
         </div>
     </section>
     <!-- project description section end -->
+
+    <!-- contact section start -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <form action="/contact" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <!-- contact section end -->
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 EngageX. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- footer end -->
 </body>
 </html>
