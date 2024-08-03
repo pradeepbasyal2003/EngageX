@@ -5,13 +5,18 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
+
+
 def home(request):
      
      return render(request,'index.html')
 
 # Create your views here.
 
-view={}
+views={}
+
+
+    
 
 def signup(request):
      if request.method == "POST":
@@ -71,18 +76,27 @@ def profile(request):
           # data.save()
           return redirect('/account/profile')
 
-     view['profile'] = Profile.objects.filter(username = request.user)
+
+
+     views['profile'] = Profile.objects.filter(username = request.user)
     
-     return render(request , 'profile.html')
+     return render(request , 'profile.html' ,views)
 
 
 def search(request):
      if request.method == "GET":
-          query = request.GET['query']
+          query = request.GET["query"]
           if query != "":
-               view["search"] = Profile.objects.filter(description__icontains = query) 
-          else :
-               redirect("/")
+               views["search"] = Profile.objects.filter(description__icontains = query)
 
-     view['profiles'] = Profile.objects.all()
-     return render(request,'search.html')
+
+          elif query == "":
+               redirect('/')
+                    
+
+     views['profiles'] = Profile.objects.all()
+     return render(request,'search.html' ,views)
+
+
+
+

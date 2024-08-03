@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+YOUTUBE_API_KEY = "AIzaSyBKK6EnOKuMXnbTgI0yqkJoE6jV1D4cJMk"
+
 # Application definition
 
 INSTALLED_APPS = [

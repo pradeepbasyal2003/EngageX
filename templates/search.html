@@ -5,115 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Page</title>
-    <link rel="stylesheet" href="{% static 'css\search.css'%}">
+    <link rel="stylesheet" href="{% static 'css\search.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Search Collaborations</h1>
+            <form method="GET" action="/search">
+                {%csrf_token%}
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search for brands or creators...">
-                <button>Search</button>
+                <input type="text" name="query" id="searchInput" placeholder="Search for brands or creators...">
+                <button type="submit">Search</button>
             </div>
+            </form>
         </div>
     </header>
     <main>
         <div class="container">
             <div class="profile-list" id="profileList">
+                {%for creator in search %}
                 <div class="profile-item">
-                    <img src="profile1.jpg" alt="Profile Picture" class="profile-pic">
+                    <img src="{{creator.profile_img.url}}" alt="Profile Picture" class="profile-pic">
                     <div class="profile-info">
-                        <h2>Brand Name</h2>
+                        <h2>{{creator.username}}</h2>
                         <p>Industry: Fashion</p>
-                        <p>Followers: 100K</p>
+                        <p>Followers:{{creator.subscriber}} </p>
                     </div>
                     <button class="collaborate-btn">Collaborate</button>
                 </div>
-                <div class="profile-item">
-                    <img src="profile2.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Creator Name</h2>
-                        <p>Specialty: Travel Vlogs</p>
-                        <p>Followers: 50K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile3.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Brand Alpha</h2>
-                        <p>Industry: Tech</p>
-                        <p>Followers: 200K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile4.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Creator Beta</h2>
-                        <p>Specialty: Cooking</p>
-                        <p>Followers: 150K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile5.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Brand Gamma</h2>
-                        <p>Industry: Beauty</p>
-                        <p>Followers: 250K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile6.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Creator Delta</h2>
-                        <p>Specialty: Fitness</p>
-                        <p>Followers: 300K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile7.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Brand Epsilon</h2>
-                        <p>Industry: Automotive</p>
-                        <p>Followers: 120K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile8.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Creator Zeta</h2>
-                        <p>Specialty: Gaming</p>
-                        <p>Followers: 80K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile9.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Brand Eta</h2>
-                        <p>Industry: Education</p>
-                        <p>Followers: 400K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
-                <div class="profile-item">
-                    <img src="profile10.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h2>Creator Theta</h2>
-                        <p>Specialty: Photography</p>
-                        <p>Followers: 60K</p>
-                    </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
+                
+                {%endfor%}
+
+                <!-- {%for profile in search%}
+                <p>{{profile.username}}</p>
+                {%endfor%}   -->
             </div>
         </div>
     </main>
-    <script src="search.js"></script>
+    <!-- <script src="search.js"></script> -->
 </body>
 </html>
