@@ -10,6 +10,9 @@ body {
     color: #333;
 }
 
+
+/* nav section start */
+
 header {
     background-color: rgb(214, 236, 255);
     color: #fff;
@@ -73,6 +76,9 @@ nav {
     color: #333;
 }
 
+/* nav section end */
+
+/* project-description section index.html */
 .project-description{
     background-color: rgb(214, 236, 255);
     color: #fff;
@@ -100,4 +106,6 @@ nav {
     border-radius: 20px;
 
 }
+
+/* project-description section end index.html */
 

@@ -23,22 +23,26 @@
                 {%else%}
                 <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
                 {%endif%}
+                <li><span class="material-symbols-outlined"></span>manage_accounts<a href="/account/update_profile">Update profile</a></li>
             </ul>
         </nav>
     </header>
     <!-- header end -->
 
-    <!-- project description section start -->
-    <section class="project-description">
-        <div class="container">
-            <h2>About Our Project</h2>
-            <p>Our project aims to revolutionize the way you manage your tasks and projects. With our intuitive design and powerful features, you'll be able to stay organized and efficient like never before.</p>
-            <a href="#signup" class="btn large">Sign Up Now</a>
-        </div>
-        <div class="image-container">
-            <img src="{%static 'images\pexels-pixabay-267350.jpg' %}" alt="" class="image1">
-        </div>
-    </section>
-    <!-- project description section end -->
+    <!-- profile section start -->
+    <div class="profile">
+        <figure class="bg-img">
+            <img src="#" alt="background" class="bg-image">
+        </figure>
+        <figure class="profile-img">
+            <img src="#" alt="profile picture" class="profile-pic">
+        </figure>
+        <section class="profile-info"> 
+            <h2 class="profile-name"> Jessica Randall</h2>
+            <p class="profile-bio"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae natus sed dolor nihil quam voluptas suscipit sequi, iusto quia quidem voluptates necessitatibus magnam et saepe tenetur earum sunt fugit impedit?</p>
+        </section>
+    </div>
+    <!-- profile section end -->
+
 </body>
 </html>

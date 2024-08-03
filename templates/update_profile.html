@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngageX</title>
+    <link rel="stylesheet" href="{%static 'css\profile.css'%}">
+    <!-- <link rel="stylesheet" href="{%static 'css\login.css'%}"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+</head>
+<body>
+    <!-- header start -->
+    <header>
+        <nav>
+            <div class="logo-class"><img class="logo"  src="{%static 'images\engagex-high-resolution-logo-black-transparent.png' %}" alt=""></div>
+            <ul class="nav-links">
+                <li><span class="material-symbols-outlined">home</span><a href="#home">Home</a></li>
+                <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
+                <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
+                {%if user.is_authenticated%}
+                <li><span class="material-symbols-outlined">person</span><a href="/account/profile">{{user.username}}</a></li>
+                {%else%}
+                <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
+                {%endif%}
+                <li><span class="material-symbols-outlined"></span>manage_accounts<a href="#">Update profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header end -->
+
+    <!-- profile update -->
+    <div class="profile_container">
+            <!-- profile update form -->
+            <div class="form-container" id="signupContainer" >
+                <h1>Update your profile</h1>
+                <form id="signupForm" method="POST">
+                    {%csrf_token%}
+                    {%for message in messages%}
+                    {%if message.tags == "success" %}
+                        <font color = "green"><center>{{message}}</center></font>
+                    {%elif message.tags == "error" %}
+                        <font color = "red"><center>{{message}}</center></font>
+                    {%endif%}
+                    {%endfor%}
+                
+                    <input type="text" id="signupUsername" name="username" placeholder="Username" >   
+                    <input type="email" id="signupEmail" name="email" placeholder="Email">
+                    <input type="file" id="profile_img" name="profile_img" accept="image/png , image/jpeg">
+                    <input type="text" id="challen_id" name ="channel_id" placeholder="Youtube channel Id">
+                    <textarea name="description" id="description" cols="30" rows="10">write a short intro about yourself here</textarea>
+                    <div class="signup-options">
+                        <button type="submit">Update</button>
+                        
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    <!-- profile update -->
+
+
+    </body>
+    </html>
