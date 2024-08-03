@@ -11,6 +11,7 @@ def home(request):
 
 # Create your views here.
 
+view={}
 
 def signup(request):
      if request.method == "POST":
@@ -70,4 +71,18 @@ def profile(request):
           # data.save()
           return redirect('/account/profile')
 
+     view['profile'] = Profile.objects.filter(username = request.user)
+    
      return render(request , 'profile.html')
+
+
+def search(request):
+     if request.method == "GET":
+          query = request.GET['query']
+          if query != "":
+               view["search"] = Profile.objects.filter(description__icontains = query) 
+          else :
+               redirect("/")
+
+     view['profiles'] = Profile.objects.all()
+     return render(request,'search.html')
