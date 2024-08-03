@@ -19,7 +19,7 @@
                 <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
                 <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
                 {%if user.is_authenticated%}
-                <li><span class="material-symbols-outlined">person</span><a href="/account/profile">{{user.username}}</a></li>
+                <li><span class="material-symbols-outlined">manage_accounts</span><a href="/account/profile">{{user.username}}</a></li>
                 {%else%}
                 <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
                 {%endif%}
@@ -30,7 +30,7 @@
 
     <!-- project description section start -->
     <section class="project-description">
-        <div class="container">
+        <div class="body-container">
             <h2>About Our Project</h2>
             <p>Our project aims to revolutionize the way you manage your tasks and projects. With our intuitive design and powerful features, you'll be able to stay organized and efficient like never before.</p>
             <a href="#signup" class="btn large">Sign Up Now</a>

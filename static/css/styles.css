@@ -21,6 +21,7 @@ header {
     width: 98%;
     margin: 5px auto;
     position: sticky;
+    z-index: 10;
     top : 0;
 }
 
@@ -90,7 +91,7 @@ nav {
     justify-content: space-between;
 }
 
-.container{
+.body-container{
     color: #333;
     width: 48%;
     margin-left: 5px;
@@ -109,3 +110,21 @@ nav {
 
 /* project-description section end index.html */
 
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+    z-index: 1;
+}
+.me-2 {
+    margin-right: .5rem!important;
+}

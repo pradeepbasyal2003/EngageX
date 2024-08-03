@@ -51,11 +51,23 @@ def signup(request):
 
 
 
+
 def profile(request):
+     if request.method == "POST":
+          username = request.POST["username"]
+          email = request.POST["email"]
+          channel_id = request.POST["channel_id"]
+          profile_img = request.POST["profile_img"]
+          description = request.POST["description"]
+          data = Profile.objects.filter(user = request.user).update(
+               # user = request.user,
+               username = username,
+               email = email,
+               channel_id = channel_id,
+               profile_img = profile_img,
+               description = description
+          )
+          # data.save()
+          return redirect('/account/profile')
 
      return render(request , 'profile.html')
-
-
-def update_profile(request):
-
-     return render(request , 'update_profile.html')

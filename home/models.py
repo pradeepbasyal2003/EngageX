@@ -6,13 +6,15 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 
-    username = models.CharField(max_length=200 , blank = True)
+    username = models.CharField(max_length=200 , blank = True )
 
     description = models.TextField()
 
-    profile_img = models.ImageField(upload_to="media" , blank= True)
+    profile_img = models.ImageField(upload_to="media/" , blank= True)
 
     channel_id = models.CharField(max_length = 500)
+
+    email = models.EmailField(blank = True)
 
     def save(self , *args , **kwargs):
         if self.username == "":
