@@ -17,6 +17,14 @@ class Profile(models.Model):
 
     email = models.EmailField(blank = True)
 
+    youtube_link = models.CharField(blank = True , max_length = 200)
+
+    instagram_link = models.CharField(blank = True , max_length = 200)
+
+    twitter_link = models.CharField(blank = True , max_length = 200)
+
+    facebook_link = models.CharField(blank = True , max_length = 200)
+
     
 
     def save(self , *args , **kwargs):
