@@ -89,9 +89,8 @@ def search(request):
           if query != "":
                views["search"] = Profile.objects.filter(description__icontains = query)
 
-
           elif query == "":
-               redirect('/')
+               redirect('/home')
                     
 
      views['profiles'] = Profile.objects.all()

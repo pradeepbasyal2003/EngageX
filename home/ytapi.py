@@ -16,4 +16,25 @@ def get_subscriber_count(channel_id):
         return {'error': 'Channel not found'}
     
 
+def get_views_count(channel_id):
+    api_key = settings.YOUTUBE_API_KEY
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    res = youtube.channels().list(id=channel_id, part='statistics').execute()
+
+    if 'items' in res and len(res['items']) > 0:
+        view_count = res['items'][0]['statistics']['viewCount']
+        return view_count
+    else:
+        return {'error': 'Channel not found'}
+    
+def get_video_count(channel_id):
+    api_key = settings.YOUTUBE_API_KEY
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    res = youtube.channels().list(id=channel_id, part='statistics').execute()
+
+    if 'items' in res and len(res['items']) > 0:
+        video_count = res['items'][0]['statistics']['videoCount']
+        return video_count
+    else:
+        return {'error': 'Channel not found'}    
 # print(('UC0bG20RykiBFmCBqabR_5pg')) 

@@ -23,7 +23,7 @@
                 </div>
             </form>
             <ul class="nav-links">
-                <li><span class="material-symbols-outlined">home</span><a href="#home">Home</a></li>
+                <li><span class="material-symbols-outlined">home</span><a href="/">Home</a></li>
                 <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
                 <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
                 {% if user.is_authenticated %}
@@ -37,13 +37,18 @@
     <!-- header end -->
 
     <!-- project description section start -->
-    <section class="project-description">
+    <section class="project-description" id="about">
         <div class="body-container">
             <h2>About Our Project</h2>
             <p>At EngageX, we are dedicated to transforming the way brands and creators connect. Our platform provides a seamless and innovative approach to collaboration, making it easier than ever for creators and brands to work together on exciting projects.</p>
             <p>Our team has meticulously designed EngageX to be a powerful tool for managing partnerships and fostering creativity. With features that include advanced search capabilities, personalized recommendations, and robust communication tools, we aim to enhance the way you discover and engage with potential collaborators.</p>
             <p>We believe in the power of collaboration and the impact it can have on the industry. EngageX is more than just a platform; it’s a community where creativity thrives and meaningful connections are made. Join us in shaping the future of brand-creator interactions.</p>
-            <a href="#signup" class="btn large">Sign Up Now</a>
+            {%if user.is_authenticated%}
+            <a href="/account/profile" class="btn large">Get started</a>
+            {%else%}
+            <a href="/signup" class="btn large">Sign Up</a>
+            {%endif%}
+
         </div>
         <div class="image-container">
             <img src="{% static 'images/pexels-pixabay-267350.jpg' %}" alt="Project Image" class="image1">
@@ -52,7 +57,7 @@
     <!-- project description section end -->
 
     <!-- contact section start -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" id="contact">
         <div class="contact-container">
             <h2>Contact Us</h2>
             <form action="/contact" method="POST">

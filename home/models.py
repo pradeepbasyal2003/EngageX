@@ -35,7 +35,8 @@ class Profile(models.Model):
 
     channel_id="UC0bG20RykiBFmCBqabR_5pg"
     subscriber = get_subscriber_count(channel_id)
-
+    reach = get_views_count(channel_id)
+    videos = get_video_count(channel_id)
     def __str__(self):
         return self.username
 
