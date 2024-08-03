@@ -1,4 +1,4 @@
-api_key = "AIzaSyBKK6EnOKuMXnbTgI0yqkJoE6jV1D4cJMk"
+
 from django.http import JsonResponse
 from googleapiclient.discovery import build
 from django.conf import settings

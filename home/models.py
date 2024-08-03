@@ -25,8 +25,8 @@ class Profile(models.Model):
 
         super().save(*args , **kwargs)
 
-
-    subscriber = get_subscriber_count('UC0bG20RykiBFmCBqabR_5pg')
+    channel_id="UC0bG20RykiBFmCBqabR_5pg"
+    subscriber = get_subscriber_count(channel_id)
 
     def __str__(self):
         return self.username
