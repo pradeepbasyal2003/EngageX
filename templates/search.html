@@ -10,16 +10,28 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Search Collaborations</h1>
-            <form method="GET" action="/search">
-                {%csrf_token%}
-            <div class="search-bar">
-                <input type="text" name="query" id="searchInput" placeholder="Search for brands or creators...">
-                <button type="submit">Search</button>
+        <nav>
+            <div class="logo-class">
+                <img class="logo" src="{% static 'images/engagex-high-resolution-logo-black-transparent.png' %}" alt="EngageX Logo">
             </div>
+            <form method="GET" action="/search">
+                {% csrf_token %}
+                <div class="search-bar">
+                    <input type="text" name="query" placeholder="Search for brands or creators...">
+                    <button type="submit">Search</button>
+                </div>
             </form>
-        </div>
+            <ul class="nav-links">
+                <li><span class="material-symbols-outlined">home</span><a href="/">Home</a></li>
+                <li><span class="material-symbols-outlined">info</span><a href="#about">About</a></li>
+                <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li><span class="material-symbols-outlined">manage_accounts</span><a href="/account/profile">{{ user.username }}</a></li>
+                {% else %}
+                <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </header>
     <main>
         <div class="container">
