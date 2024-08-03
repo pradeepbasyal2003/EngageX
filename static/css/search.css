@@ -9,11 +9,12 @@ header {
     background-color: #fff;
     padding: 20px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom : 10px;
 }
 
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 0 20px;
 }
 
@@ -105,4 +106,8 @@ h1 {
 
 .collaborate-btn:hover {
     background-color: #218838;
+}
+
+main{
+    margin-top: 30px;
 }
