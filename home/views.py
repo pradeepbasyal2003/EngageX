@@ -4,6 +4,7 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+import re
 
 
 
@@ -27,7 +28,8 @@ def signup(request):
           password = request.POST["password"]
           cpassword = request.POST["cpassword"]
 
-          
+          email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$'
+
           if password == cpassword :
                if User.objects.filter(username = username).exists():
                     messages.error(request , "the username is not available")
@@ -37,6 +39,14 @@ def signup(request):
                     messages.error(request , "the email is already in use")
                     return redirect('/signup')
                
+               elif len(password) < 6 :
+                    messages.error(request , "the password need to be atleast 6 characters")
+                    return redirect('/signup')
+               
+               elif not re.match(email_pattern, email):
+                    messages.error(request , "the email pattern is wrong")
+                    return redirect('/signup')
+
                else:
                     data = User.objects.create_user(
                          first_name = fname,

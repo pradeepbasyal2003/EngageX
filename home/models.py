@@ -33,7 +33,7 @@ class Profile(models.Model):
 
         super().save(*args , **kwargs)
 
-    channel_id="UC0bG20RykiBFmCBqabR_5pg"
+    channel_id="UCX6OQ3DkcsbYNE6H8uQQuVA"
     subscriber = get_subscriber_count(channel_id)
     reach = get_views_count(channel_id)
     videos = get_video_count(channel_id)
