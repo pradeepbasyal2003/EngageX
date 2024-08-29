@@ -11,13 +11,10 @@
     <div class="container">
         <!-- Login Form -->
         <div class="form-container" id="loginContainer">
-            {%for message in messages%}
-            {%if message.tags == "success" %}
-                <font color = "green"><center>{{message}}</center></font>
-            {%elif message.tags == "error" %}
-                <font color = "red"><center>{{message}}</center></font>
-            {%endif%}
-            {%endfor%}
+            <!-- {%if user.is_authenticated == False%}
+            <font color = "red"><center>username or password incorrect</center></font>
+            {%endif%}    -->
+            <p></p>
             <h1>Login</h1>
             <form id="loginForm" method="POST">
                 {%csrf_token%}
@@ -25,14 +22,16 @@
                 <input type="password" id="loginPassword" name="password" placeholder="Password" required> -->
                 {{form.username}}
                 {{form.password}}
-
+                
                 <button type="submit">Login</button>
+
+
             </form>
             <p>Don't have an account? <a href="/signup">Sign up</a></p>
         </div>
 
 
     </div>
-    <script src="{% static 'script.js' %}"></script>
+    <!-- <script src="{% static 'script.js' %}"></script> -->
 </body>
 </html> 

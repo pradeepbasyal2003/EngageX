@@ -28,6 +28,9 @@
                 <li><span class="material-symbols-outlined">call</span><a href="#contact">Contact</a></li>
                 {% if user.is_authenticated %}
                 <li><span class="material-symbols-outlined">manage_accounts</span><a href="/account/profile">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout'%}"><span class="material-symbols-outlined">logout</span></li></a>
+
+
                 {% else %}
                 <li><span class="material-symbols-outlined">person</span><a href="/account/login">Sign In</a></li>
                 {% endif %}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {%load static%}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,17 @@
     <link rel="stylesheet" href="{% static 'css\search.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="container">
             <h1>Search Collaborations</h1>
             <form method="GET" action="/search">
                 {%csrf_token%}
-            <div class="search-bar">
-                <input type="text" name="query" id="searchInput" placeholder="Search for brands or creators...">
-                <button type="submit">Search</button>
-            </div>
+                <div class="search-bar">
+                    <input type="text" name="query" id="searchInput" placeholder="Search for brands or creators...">
+                    <button type="submit">Search</button>
+                </div>
             </form>
         </div>
     </header>
@@ -26,18 +28,31 @@
             <div class="profile-list" id="profileList">
                 {%for creator in search %}
                 <div class="profile-item">
+                    {%if creator.profile_img == NULL%}
+                    <img src="#" alt="Profile Picture" class="profile-pic">
+                    {%else%}
                     <img src="{{creator.profile_img.url}}" alt="Profile Picture" class="profile-pic">
+                    {%endif%}
                     <div class="profile-info">
                         <h2>{{creator.username}}</h2>
+                        <!-- <p>{{creator.channel_id}}</p> -->
                         <p>Industry: Fashion</p>
                         <p>Followers:{{creator.subscriber}} </p>
                         <p>Reach:{{creator.reach}} </p>
                         <p>videos uploaded:{{creator.videos}} </p>
 
                     </div>
-                    <button class="collaborate-btn">Collaborate</button>
-                </div>
+                    
+                    <a href="/search_profile">
+                        <form action="/search_profile" method="POST">
+                            {%csrf_token%} 
+                        <input type="hidden" name="username" value="{{ creator.username }}">
+                        <button class="collaborate-btn" type="submit">Collaborate</button>
+                    </form>
+                    </a>
                 
+                </div>
+
                 {%endfor%}
 
                 <!-- {%for profile in search%}
@@ -48,4 +63,5 @@
     </main>
     <!-- <script src="search.js"></script> -->
 </body>
+
 </html>

@@ -13,7 +13,7 @@ class Profile(models.Model):
 
     profile_img = models.ImageField(upload_to="media/" , blank= True)
 
-    channel_id = models.CharField(max_length = 500)
+    channel_id = models.CharField(max_length = 500 , blank=True)
 
     email = models.EmailField(blank = True)
 
@@ -27,16 +27,29 @@ class Profile(models.Model):
 
     
 
+    # channel_id="UCX6OQ3DkcsbYNE6H8uQQuVA"
+    def subscriber(self):
+        if self.channel_id:
+            return get_subscriber_count(self.channel_id)
+        return None
+
+    @property
+    def reach(self):
+        if self.channel_id:
+            return get_views_count(self.channel_id)
+        return None
+
+    @property
+    def videos(self):
+        if self.channel_id:
+            return get_video_count(self.channel_id)
+        return None
+    
     def save(self , *args , **kwargs):
         if self.username == "":
             self.username = self.user.username
 
         super().save(*args , **kwargs)
-
-    channel_id="UCX6OQ3DkcsbYNE6H8uQQuVA"
-    subscriber = get_subscriber_count(channel_id)
-    reach = get_views_count(channel_id)
-    videos = get_video_count(channel_id)
     def __str__(self):
         return self.username
 

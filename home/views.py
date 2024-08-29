@@ -17,8 +17,6 @@ def home(request):
 views={}
 
 
-    
-
 def signup(request):
      if request.method == "POST":
           username = request.POST["username"]
@@ -37,10 +35,6 @@ def signup(request):
                
                elif User.objects.filter(email = email).exists():
                     messages.error(request , "the email is already in use")
-                    return redirect('/signup')
-               
-               elif len(password) < 6 :
-                    messages.error(request , "the password need to be atleast 6 characters")
                     return redirect('/signup')
                
                elif not re.match(email_pattern, email):
@@ -70,19 +64,31 @@ def signup(request):
 
 def profile(request):
      if request.method == "POST":
-          username = request.POST["username"]
+          # username = request.POST["username"]
           email = request.POST["email"]
           channel_id = request.POST["channel_id"]
           profile_img = request.POST["profile_img"]
           description = request.POST["description"]
-          data = Profile.objects.filter(user = request.user).update(
+          if email != "":
+               data = Profile.objects.filter(user = request.user).update(
                # user = request.user,
-               username = username,
                email = email,
+               )
+          if channel_id != "":
+               data = Profile.objects.filter(user = request.user).update(
+               # user = request.user,
                channel_id = channel_id,
+               )
+          if profile_img != "":
+               data = Profile.objects.filter(user = request.user).update(
+               # user = request.user,
                profile_img = profile_img,
-               description = description
-          )
+               )
+          if description != "":
+               data = Profile.objects.filter(user = request.user).update(
+               # user = request.user,
+               description = description,
+               )
           # data.save()
           return redirect('/account/profile')
 
@@ -107,5 +113,12 @@ def search(request):
      return render(request,'search.html' ,views)
 
 
+def search_profile(request):
+     if request.method == "POST":
+          username = request.POST.get("username")
+          views['profile'] = Profile.objects.filter(username = username)
+
+
+     return render(request , 'search_profile.html' , views)
 
 
